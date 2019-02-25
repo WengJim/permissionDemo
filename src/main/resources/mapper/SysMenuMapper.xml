@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.demo.permission.dao.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="cn.com.demo.permission.model.SysMenu">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="menu_id" jdbcType="BIGINT" property="menuId"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="perms" jdbcType="VARCHAR" property="perms"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="order_num" jdbcType="INTEGER" property="orderNum"/>
+    </resultMap>
+
+    <!-- 根据key，查询value -->
+    <select id="queryUserMenus" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	SELECT
+	m.*
+FROM
+	sys_user u
+LEFT JOIN sys_dept d ON u.dept_id = d.dept_id
+LEFT JOIN sys_role_dept dr ON d.dept_id = dr.dept_id
+LEFT JOIN sys_role r ON r.dept_id = dr.dept_id
+LEFT JOIN sys_role_menu rm ON rm.role_id = r.role_id
+LEFT JOIN sys_menu m ON rm.menu_id = m.menu_id
+WHERE
+	u.user_id = #{userId}
+	</select>
+</mapper>

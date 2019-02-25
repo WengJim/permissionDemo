@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+      http://www.ctrip.com/schema/apollo http://www.ctrip.com/schema/apollo.xsd "
+	   xmlns:apollo="http://www.ctrip.com/schema/apollo"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans">
+
+	<!-- 配置读取
+	<apollo:config/>
+	<apollo:config namespaces="restful.spring.datasource" />
+	<apollo:config namespaces="restful.redis" />
+	<import resource="classpath:spring-jedis.xml"/> -->
+</beans>
